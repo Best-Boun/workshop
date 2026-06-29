@@ -1,4 +1,4 @@
-# My Project
+# E-Commerce Platform for Computer Hardware and Gaming Gears
 
 โปรเจกต์ตัวอย่างสำหรับเรียนรู้ Git และ GitHub
 
