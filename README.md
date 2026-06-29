@@ -13,3 +13,4 @@
 ```bash
 npm install
 npm run dev
+![GitHub Logo](https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png)
