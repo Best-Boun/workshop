@@ -1,4 +1,15 @@
-# หัวข้อใหญ่
-## หัวข้อรอง
-### หัวข้อย่อย
-#### หัวข้อย่อยระดับ 4
+# My Project
+
+โปรเจกต์ตัวอย่างสำหรับเรียนรู้ Git และ GitHub
+
+## Features
+
+- Login
+- Register
+- Dashboard
+
+## Installation
+
+```bash
+npm install
+npm run dev
