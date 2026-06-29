@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SolarMart - System Specification Document</title>
+    <title>Mootle</title>
     <link rel="stylesheet" href="Doc.css">
 </head>
 <body>
@@ -11,19 +11,15 @@
         <!-- SIDEBAR -->
         <div class="sidebar">
             <div class="sidebar-header">
-                <div class="sidebar-logo">☀️ SolarMart</div>
-                <div class="sidebar-subtitle">System Specification</div>
+                <div class="sidebar-logo">Mootle</div>
             </div>
             <ul class="sidebar-menu">
                 <a href="#section1" class="menu-link active">📊 ภาพรวมของระบบ</a>
                 <a href="#section2" class="menu-link">🖥️ ระบบหน้าผู้ใช้</a>
                 <a href="#section3" class="menu-link">⚙️ ระบบผู้ดูแล</a>
                 <a href="#section4" class="menu-link">📁 ระบบจัดเก็บข้อมูล</a>
-                <a href="#section5" class="menu-link">🔐 ระบบความปลอดภัย</a>
-                <a href="#section6" class="menu-link">📱 ระบบมือถือ</a>
                 <a href="#section7" class="menu-link">🛠️ เครื่องมือและ API</a>
                 <a href="#section8" class="menu-link">📈 ระบบรายงาน</a>
-                <a href="#section9" class="menu-link">🔧 ระบบอื่น ๆ</a>
             </ul>
         </div>
 
@@ -36,7 +32,7 @@
                     ภาพรวมของระบบ
                 </div>
                 <div class="section-intro">
-                    <strong>SolarMart</strong> เป็นแพลตฟอร์มจัดการระบบพลังงานแสงอาทิตย์ที่ออกแบบมาเพื่อให้ผู้ใช้ง่ายและมีประสิทธิภาพสูง ระบบนี้เชื่อมต่อกับ Markdown (MD Tags) เพื่อใช้ในการจัดทำเอกสารและอธิบายรายละเอียดโครงงานอย่างเป็นระบบ
+                    <strong>Mootle</strong> เป็นแพลตฟอร์มอีคอมเมิร์ซสำหรับอุปกรณ์คอมพิวเตอร์และเกมมิ่งเกียร์ที่มีฟีเจอร์ครบครัน ตั้งแต่การจัดการสินค้า การสั่งซื้อ การชำระเงิน 
                 </div>
                 <div class="subsection-title">ส่วนประกอบหลัก</div>
                 <ol class="content-list">
@@ -44,9 +40,7 @@
                     <li><strong>Admin Dashboard</strong> - ส่วนจัดการระบบ</li>
                     <li><strong>System Integration</strong> - การเชื่อมต่อระบบต่าง ๆ</li>
                     <li><strong>Database Management</strong> - การจัดการฐานข้อมูล</li>
-                    <li><strong>API Services</strong> - บริการ API สำหรับเชื่อมต่อ</li>
                 </ol>
-                <p class="content-text">ระบบนี้ถูกพัฒนาด้วย Collaborative Development และ DevOps Workflow เพื่อให้มีประสิทธิภาพและความปลอดภัยสูงสุด</p>
             </div>
 
             <div class="divider"></div>
@@ -73,7 +67,7 @@
                         <tr>
                             <td class="id-cell">C-01</td>
                             <td class="feature-cell">แสดงหน้าแรก</td>
-                            <td class="detail-cell">แสดงข้อมูลเบื้องต้นและการ์ดข้อมูลโปรโมชั่น ราคา ไฟล์</td>
+                            <td class="detail-cell">แสดงข้อมูลเบื้องต้นและการ์ดข้อมูลโปรโมชั่น ราคา </td>
                             <td class="priority-cell"><span class="badge badge-high">High</span></td>
                         </tr>
                         <tr>
@@ -89,39 +83,27 @@
                             <td class="priority-cell"><span class="badge badge-high">High</span></td>
                         </tr>
                         <tr>
-                            <td class="id-cell">C-04</td>
-                            <td class="feature-cell">Solar Calculator</td>
-                            <td class="detail-cell">คำนวนจำนวนการสูญเสียไฟฟ้า – ตัวเลือกทางเลือก</td>
-                            <td class="priority-cell"><span class="badge badge-high">High</span></td>
-                        </tr>
-                        <tr>
                             <td class="id-cell">C-05</td>
                             <td class="feature-cell">เพิ่มรายการ</td>
-                            <td class="detail-cell">เพิ่มสินค้าลงในรายการสินค้า | useReducer</td>
+                            <td class="detail-cell">เพิ่มสินค้าลงในรายการสินค้า</td>
                             <td class="priority-cell"><span class="badge badge-high">High</span></td>
                         </tr>
                         <tr>
                             <td class="id-cell">C-06</td>
                             <td class="feature-cell">ตะกร้าสินค้า</td>
-                            <td class="detail-cell">PromptPay Credit Card COD การชำระเงินวิธีต่าง ๆ</td>
+                            <td class="detail-cell">PromptPay Credit Card การชำระเงินวิธีต่าง ๆ</td>
                             <td class="priority-cell"><span class="badge badge-high">High</span></td>
                         </tr>
                         <tr>
                             <td class="id-cell">C-07</td>
-                            <td class="feature-cell">ปีติด/แสดงสินค้า</td>
+                            <td class="feature-cell">แสดงสินค้า</td>
                             <td class="detail-cell">เลือกราคา – ราคามาตรฐาน – จำนวนจำกัด</td>
                             <td class="priority-cell"><span class="badge badge-high">High</span></td>
                         </tr>
                         <tr>
                             <td class="id-cell">C-08</td>
                             <td class="feature-cell">นอกเว็บไซต์</td>
-                            <td class="detail-cell">หมดสินค้า + LINE Official Account</td>
-                            <td class="priority-cell"><span class="badge badge-medium">Medium</span></td>
-                        </tr>
-                        <tr>
-                            <td class="id-cell">C-09</td>
-                            <td class="feature-cell">ประจำวันวัก</td>
-                            <td class="detail-cell">ตั้งค่า login ทั้งระบบทั้งจำนวนจำกัด</td>
+                            <td class="detail-cell">LINE Official Account</td>
                             <td class="priority-cell"><span class="badge badge-medium">Medium</span></td>
                         </tr>
                     </tbody>
@@ -152,7 +134,7 @@
                         <tr>
                             <td class="id-cell">A-01</td>
                             <td class="feature-cell">ดูรายการสินค้า</td>
-                            <td class="detail-cell">CRUD ข้อมูลและจัดการข้อมูลรายละเอียด</td>
+                            <td class="detail-cell">ข้อมูลและจัดการข้อมูลรายละเอียด</td>
                             <td class="priority-cell"><span class="badge badge-high">High</span></td>
                         </tr>
                         <tr>
@@ -185,54 +167,8 @@
                 <div class="subsection-title">องค์ประกอบหลัก</div>
                 <ul class="content-list">
                     <li>MySQL Database Server - สำหรับจัดเก็บข้อมูลหลัก</li>
-                    <li>Backup System - ระบบสำรองข้อมูลอัตโนมัติ</li>
-                    <li>Query Optimization - การปรับปรุงประสิทธิภาพการค้นหา</li>
-                    <li>Data Indexing - ระบบดัชนีข้อมูล</li>
                 </ul>
             </div>
-
-            <div class="divider"></div>
-
-            <!-- Section 5 -->
-            <div class="content-section" id="section5">
-                <div class="section-title">
-                    <span class="section-title-icon">🔐</span>
-                    ระบบความปลอดภัย (Security System)
-                </div>
-                <div class="section-intro">
-                    <strong>นโยบายความปลอดภัย:</strong> ข้อมูลส่วนบุคคลของผู้ใช้จะได้รับการเข้ารหัสและเก็บรักษาด้วยมาตรฐานความปลอดภัยระดับสูง
-                </div>
-                <div class="subsection-title">มาตรการความปลอดภัย</div>
-                <ul class="content-list">
-                    <li>SSL/TLS Encryption - การเข้ารหัสการสื่อสารข้อมูล</li>
-                    <li>Password Hashing - การเข้ารหัสรหัสผ่าน</li>
-                    <li>Two-Factor Authentication - การยืนยันตัวตนแบบสองชั้น</li>
-                    <li>SQL Injection Prevention - การป้องกันการโจมตี SQL</li>
-                    <li>XSS Protection - การป้องกัน Cross-Site Scripting</li>
-                </ul>
-            </div>
-
-            <div class="divider"></div>
-
-            <!-- Section 6 -->
-            <div class="content-section" id="section6">
-                <div class="section-title">
-                    <span class="section-title-icon">📱</span>
-                    ระบบมือถือ (Mobile Application)
-                </div>
-                <div class="section-intro">
-                    <strong>คำอธิบาย:</strong> ระบบมือถือที่รองรับ iOS และ Android เพื่อให้ผู้ใช้สามารถเข้าถึงระบบได้ทุกที่ทุกเวลา
-                </div>
-                <div class="subsection-title">ลักษณะการทำงาน</div>
-                <ul class="content-list">
-                    <li>Responsive Design - การออกแบบที่ตอบสนองต่อขนาดหน้าจอ</li>
-                    <li>Offline Support - สนับสนุนการใช้งานออฟไลน์</li>
-                    <li>Push Notifications - การแจ้งเตือนผ่าน Push</li>
-                    <li>Location Services - บริการตำแหน่งที่ตั้ง</li>
-                </ul>
-            </div>
-
-            <div class="divider"></div>
 
             <!-- Section 7 -->
             <div class="content-section" id="section7">
@@ -253,9 +189,6 @@
                 <div class="subsection-title">Backend Technologies</div>
                 <ul class="content-list">
                     <li>Node.js - JavaScript runtime</li>
-                    <li>Express.js - Web framework</li>
-                    <li>MySQL - Database management</li>
-                    <li>REST API - Architecture pattern</li>
                 </ul>
             </div>
 
@@ -277,31 +210,6 @@
                     <li>Revenue Report - รายงานรายได้</li>
                     <li>Inventory Report - รายงานสินค้าคงคลัง</li>
                 </ul>
-            </div>
-
-            <div class="divider"></div>
-
-            <!-- Section 9 -->
-            <div class="content-section" id="section9">
-                <div class="section-title">
-                    <span class="section-title-icon">🔧</span>
-                    ระบบอื่น ๆ (Miscellaneous Systems)
-                </div>
-                <div class="section-intro">
-                    <strong>หมายเหตุ:</strong> ส่วนนี้รวมถึงระบบเพิ่มเติมที่อาจจำเป็นต้องใช้ในการพัฒนาที่จะมาในภายหน้า
-                </div>
-                <div class="subsection-title">การบำรุงรักษาและการอัปเดต</div>
-                <p class="content-text">ระบบ SolarMart จะอยู่ภายใต้การบำรุงรักษาและพัฒนาอย่างต่อเนื่อง เพื่อให้มีประสิทธิภาพและความปลอดภัยสูงสุดเสมอ การอัปเดตจะอยู่ในรูปแบบต่างๆ เช่น bug fixes, feature updates, security patches เป็นต้น</p>
-                <div class="subsection-title">การสนับสนุนและ Support</div>
-                <p class="content-text">ทีมพัฒนาจะให้การสนับสนุนด้านเทคนิคแก่ผู้ใช้และผู้ดูแลระบบ เพื่อให้ระบบสามารถทำงานได้อย่างราบรื่น ติดต่อสอบถามได้ผ่านชองทาง Email, Phone, หรือ Live Chat</p>
-                <div class="subsection-title">วิสัยทัศน์อนาคต</div>
-                <p class="content-text">ในอนาคต ระบบ SolarMart จะถูกพัฒนาให้มี features เพิ่มเติมเช่น AI-powered recommendations, Machine Learning for optimization, IoT integration, Blockchain for transactions เป็นต้น เพื่อให้ระบบสามารถตอบสนองความต้องการของตลาดได้</p>
-            </div>
-
-            <!-- Footer -->
-            <div style="text-align: center; padding: 40px 0; color: #999; border-top: 2px solid #e0e0e0; margin-top: 80px;">
-                <p>📅 SolarMart System Specification Document 2026</p>
-                <p style="font-size: 0.9em; margin-top: 10px;">© 2026 SolarMart Project. All rights reserved.</p>
             </div>
         </div>
     </div>
