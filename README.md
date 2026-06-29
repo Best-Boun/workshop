@@ -1,6 +1,6 @@
 # E-Commerce Platform for Computer Hardware and Gaming Gears
 
-- สมาชิก:  
+**สมาชิก**
 - สุรวุฒิ บุญยู้
 - เชษฐกิตติ์ สืบสุขสันติ
 - รัชภูมิ ธรรมประชา
