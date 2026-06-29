@@ -85,6 +85,9 @@
 
 ## System Architecture
 
+## System Architecture
+
+mermaid
 flowchart TB
 
 %% =========================
