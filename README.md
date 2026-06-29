@@ -85,40 +85,89 @@
 
 ## System Architecture
 
-graph TD
+flowchart TB
 
-A[ลูกค้า]
-B[ผู้ดูแลระบบ]
+%% =========================
+%% CUSTOMER
+%% =========================
+subgraph CUSTOMER["👤 CUSTOMER"]
+direction LR
+A[Register / Login]
+B[Home]
+C[Browse Products]
+D[Product Details]
+E[Shopping Cart]
+F[Checkout]
+G[Payment]
+H[Order Complete]
+I[Order History]
 
-C[หน้าแรก]
-D[หน้าสินค้า]
-E[ตะกร้าสินค้า]
-F[หน้าชำระเงิน]
+A --> B --> C --> D --> E --> F --> G --> H --> I
+end
 
-G[จัดการสินค้า]
-H[จัดการคำสั่งซื้อ]
+%% =========================
+%% ADMIN
+%% =========================
+subgraph ADMIN["🛠️ ADMINISTRATOR"]
+direction TB
 
-I[Frontend<br/>React]
-J[Backend<br/>Node.js]
-K[(MySQL)]
-L[(Local Storage)]
+AA[Admin Login]
+AB[Dashboard]
 
-A --> C
-A --> D
-A --> E
-A --> F
+AA --> AB
 
-B --> G
-B --> H
+AB --> AC[Manage Products]
+AB --> AD[Manage Categories]
+AB --> AE[Manage Orders]
+AB --> AF[Manage Users]
 
-C --> I
-D --> I
-E --> I
-F --> I
+end
 
-G --> I
-H --> I
+%% =========================
+%% BACKEND
+%% =========================
+subgraph BACKEND["⚙️ BACKEND (Node.js)"]
+direction LR
 
-I --> J
-J --> K
-I --> L
+BA[Authentication]
+BB[Product Service]
+BC[Cart Service]
+BD[Order Service]
+BE[User Service]
+BF[Admin Service]
+BG[REST API]
+
+end
+
+%% =========================
+%% DATABASE
+%% =========================
+subgraph DATABASE["🗄️ DATABASE / STORAGE"]
+direction LR
+
+DA[(Users)]
+DB[(Categories)]
+DC[(Products)]
+DD[(Cart)]
+DE[(Orders)]
+DF[(Order Items)]
+DG[(Payments)]
+
+end
+
+%% =========================
+%% CONNECTIONS
+%% =========================
+
+CUSTOMER --> BACKEND
+ADMIN --> BACKEND
+
+BA --> DA
+BB --> DB
+BB --> DC
+BC --> DD
+BD --> DE
+BD --> DF
+BD --> DG
+BE --> DA
+BF --> DA
