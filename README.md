@@ -1,6 +1,9 @@
-# My Project
+# E-Commerce Platform for Computer Hardware and Gaming Gears
 
-โปรเจกต์ตัวอย่างสำหรับเรียนรู้ Git และ GitHub
+สมาชิก:  สุรวุฒิ บุญยู้
+        เชษฐกิตติ์ สืบสุขสันติ
+        รัชภูมิ ธรรมประชา
+        ภูริภัทร ทองมวน
 
 ## Features
 
