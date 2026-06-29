@@ -83,11 +83,10 @@
 
 ![Logo](images/Screenshot.png)
 
-## System Architecture
 
 ## System Architecture
 
-mermaid
+```mermaid
 flowchart TB
 
 %% =========================
