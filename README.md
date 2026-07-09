@@ -174,7 +174,7 @@ BD --> DF
 BD --> DG
 BE --> DA
 BF --> DA
-
+```
 ## 1) แผนภาพกรณีการใช้งาน (Use Case Diagram)
 
 ```mermaid
