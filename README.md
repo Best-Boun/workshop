@@ -174,3 +174,195 @@ BD --> DF
 BD --> DG
 BE --> DA
 BF --> DA
+
+## 1) แผนภาพกรณีการใช้งาน (Use Case Diagram)
+
+```mermaid
+flowchart LR
+  CUST[ลูกค้า]
+  ADM[ผู้ดูแลระบบ]
+  SADM[ผู้ดูแลสูงสุด]
+
+  subgraph SYS[ระบบร้านค้าออนไลน์ TechPulse]
+    UC1((สมัครสมาชิก))
+    UC2((เข้าสู่ระบบด้วยอีเมลหรือกูเกิล))
+    UC3((ดูรายการสินค้าและค้นหา))
+    UC4((กรองสินค้าตามหมวดหมู่และยี่ห้อ))
+    UC5((ดูรายละเอียดสินค้า))
+    UC6((เพิ่มสินค้าลงตะกร้า))
+    UC7((ยืนยันคำสั่งซื้อและกรอกที่อยู่จัดส่ง))
+    UC8((ชำระเงินและตรวจสอบสถานะการชำระ))
+    UC9((ติดตามคำสั่งซื้อและดูประวัติคำสั่งซื้อ))
+    UC10((จัดการข้อมูลบัญชีส่วนตัว))
+
+    UC11((จัดการสินค้า เพิ่ม แก้ไข ลบ))
+    UC12((จัดการหมวดหมู่สินค้า))
+    UC13((จัดการคำสั่งซื้อและอัปเดตสถานะจัดส่ง))
+    UC14((จัดการข้อมูลลูกค้า))
+    UC15((ดูรายงานสรุปและสถิติแดชบอร์ด))
+    UC16((ตรวจสอบประวัติการใช้งานและความปลอดภัย))
+    UC17((จัดการสิทธิ์การเข้าถึงของผู้ดูแลระบบ))
+  end
+
+  CUST --> UC1
+  CUST --> UC2
+  CUST --> UC3
+  CUST --> UC4
+  CUST --> UC5
+  CUST --> UC6
+  CUST --> UC7
+  CUST --> UC8
+  CUST --> UC9
+  CUST --> UC10
+
+  ADM --> UC11
+  ADM --> UC12
+  ADM --> UC13
+  ADM --> UC14
+  ADM --> UC15
+  ADM --> UC16
+
+  SADM --> UC16
+  SADM --> UC17
+```
+
+หน้าที่ของแผนภาพ:
+- แสดงขอบเขตของระบบ TechPulse ให้เห็นชัดว่าใครทำอะไรได้บ้าง
+- ใช้ยืนยันขอบเขตงานกับสมาชิกในทีมและผู้สอน
+
+ความสำคัญต่อการพัฒนาระบบ:
+- ลดความเสี่ยงการตกหล่นฟังก์ชันสำคัญ เช่น ตรวจสิทธิ์และงานหลังบ้าน
+- ใช้เป็นฐานในการกำหนดเส้นทางหน้าเว็บและสิทธิ์การเรียก API ตามบทบาท
+
+## 2) แผนภาพคลาส (Class Diagram)
+
+หมายเหตุ: แผนภาพนี้อ้างอิงชื่อโครงสร้างข้อมูลจริงในฐานข้อมูลของโครงการ
+
+```mermaid
+classDiagram
+  class User {
+    +int id
+    +string first_name
+    +string last_name
+    +string email
+    +string password
+    +string role
+    +json permissions
+    +datetime created_at
+    +datetime updated_at
+  }
+
+  class Category {
+    +int id
+    +string name
+    +string image
+    +datetime created_at
+    +datetime updated_at
+  }
+
+  class Product {
+    +int id
+    +int category_id
+    +string sku
+    +string name
+    +string brand
+    +string description
+    +decimal price
+    +int stock
+    +string status
+    +bool featured
+  }
+
+  class Order {
+    +int id
+    +int user_id
+    +decimal total_price
+    +string status
+    +string shipping_name
+    +string shipping_phone
+    +string shipping_address
+    +string shipping_city
+    +string shipping_postal_code
+    +string shipping_country
+    +datetime created_at
+    +datetime updated_at
+  }
+
+  class OrderItem {
+    +int id
+    +int order_id
+    +int product_id
+    +int quantity
+    +decimal price
+    +decimal subtotal
+    +datetime created_at
+  }
+
+  class Payment {
+    +int id
+    +int order_id
+    +string payment_method
+    +string payment_status
+    +string transaction_id
+    +decimal amount
+    +datetime paid_at
+    +datetime created_at
+  }
+
+  User "1" --> "0..*" Order : สร้างคำสั่งซื้อ
+  Category "1" --> "0..*" Product : จัดกลุ่มสินค้า
+  Order "1" --> "1..*" OrderItem : มีรายการสินค้า
+  Product "1" --> "0..*" OrderItem : ถูกอ้างอิงในรายการสั่งซื้อ
+  Order "1" --> "0..*" Payment : เชื่อมข้อมูลการชำระเงิน
+```
+
+หน้าที่ของแผนภาพ:
+- แสดงโครงสร้างข้อมูลหลักและความสัมพันธ์ระหว่างเอนทิตีในระบบ
+- ใช้อ้างอิงร่วมกันระหว่างการออกแบบฐานข้อมูลและการพัฒนาโมเดล
+
+ความสำคัญต่อการพัฒนาระบบ:
+- ลดความกำกวมของข้อมูล เช่น ความสัมพันธ์ Order กับ OrderItem และ Payment
+- ป้องกันการออกแบบซ้ำซ้อน ทำให้พัฒนา Controller และ Service ได้สอดคล้องกัน
+
+## 3) แผนภาพลำดับงาน (Sequence Diagram)
+
+กรณีศึกษา: ลำดับการทำงานของการสั่งซื้อและการชำระเงินในระบบจริง
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor C as ลูกค้า
+  participant FE as ส่วนหน้าเว็บ React
+  participant BE as ส่วนหลังเว็บ Express
+  participant OM as ตัวจัดการคำสั่งซื้อ
+  participant PM as ตัวจัดการชำระเงิน
+  participant DB as ฐานข้อมูล MySQL
+
+  C->>FE: กดยืนยันสั่งซื้อ
+  FE->>BE: ส่งคำขอสร้างคำสั่งซื้อ พร้อมโทเคนและข้อมูลจัดส่ง
+  BE->>OM: เริ่มสร้างคำสั่งซื้อ
+  OM->>DB: เริ่มธุรกรรม
+  OM->>DB: ตรวจสต็อกและล็อกข้อมูลสินค้า
+  OM->>DB: บันทึกคำสั่งซื้อและรายการสินค้า
+  OM->>DB: ตัดจำนวนสต็อกสินค้า
+  OM->>DB: ยืนยันธุรกรรม
+  OM-->>BE: ส่งรหัสคำสั่งซื้อกลับ
+  BE-->>FE: ตอบกลับว่าสร้างคำสั่งซื้อสำเร็จ
+
+  C->>FE: เลือกวิธีชำระเงินและยืนยัน
+  FE->>BE: ส่งคำขอประมวลผลการชำระเงิน
+  BE->>PM: ประมวลผลการชำระเงิน
+  PM->>DB: บันทึกข้อมูลการชำระเงิน
+  PM-->>BE: ส่งสถานะการชำระเงิน
+  BE-->>FE: ตอบกลับผลลัพธ์สำเร็จหรือรอดำเนินการหรือไม่สำเร็จ
+  FE-->>C: แสดงผลการชำระเงินและสถานะคำสั่งซื้อ
+```
+
+หน้าที่ของแผนภาพ:
+- แสดงลำดับการเรียกใช้งานจริงจากผู้ใช้ไปจนถึงฐานข้อมูล
+- ช่วยให้ทีมเห็นจุดที่ต้องมีการตรวจสอบสิทธิ์ ตรวจสต็อก และควบคุมธุรกรรม
+
+ความสำคัญต่อการพัฒนาระบบ:
+- ทำให้มองเห็นจุดเสี่ยงด้านความถูกต้องของข้อมูล เช่น การตัดสต็อกซ้ำ
+- ใช้ระบุจุดคอขวดที่ทำให้ระบบช้าในช่วงผู้ใช้หนาแน่น
+
