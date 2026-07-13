@@ -1,10 +1,10 @@
 # E-Commerce Platform for Computer Hardware and Gaming Gears
 
 **สมาชิก**
-- สุรวุฒิ บุญยู้
-- เชษฐกิตติ์ สืบสุขสันติ
-- รัชภูมิ ธรรมประชา
-- ภูริภัทร ทองมวน
+- 67144643 สุรวุฒิ บุญยู้
+- 67150490 เชษฐกิตติ์ สืบสุขสันติ
+- 67159224 รัชภูมิ ธรรมประชา
+- 67159844 ภูริภัทร ทองมวน
 
 ## หลักการและเหตุผล
 
@@ -23,11 +23,15 @@
 - ผู้จัดการ
 
 **ความสามารถของระบบ**
-1. สมัครสมาชิก / เข้าสู่ระบบ
-2. ดูและค้นหาสินค้า
-3. เพิ่มสินค้าใส่รถเข็น
-4. สั่งซื้อสินค้า
-5. ผู้ดูแลระบบจัดการสินค้าและคำสั่งซื้อ
+1. ผู้ดูแลระบบสามารถจัดการสมาชิก 
+2. ผู้ดูแลระบบสามารถจัดการข้อมูลสินค้า
+3. ลูกค้าสามารถค้นหาและแสดงรายละเอียดสินค้า
+4. ลูกค้าสามารถเพิ่มสิค้าลงตะกร้าสินค้า 
+5. ลูกค้าสามารถเลือกสั่งซื้อสินค้า 
+6. ลูกค้าสามารถชำระเงินหลังเลือกสินค้าเสร็จ 
+7. ลูกค้าสามารถติดตามสถานะคำสั่งซื้อ
+8. ผู้ดูแลจะสามารถจัดการสินค้าและคำสั่งซื้อของลูกค้า
+9. ผู้ดูแลจะสามารถดูรายงานหรือ Dashboard สรุปขอมูลเบื้องตน
 
 ## แนวทางการพัฒนาตาม SDLC
 
@@ -90,94 +94,90 @@
 ```mermaid
 flowchart TB
 
-%% =========================
-%% CUSTOMER
-%% =========================
-subgraph CUSTOMER["👤 CUSTOMER"]
-direction LR
-A[Register / Login]
-B[Home]
-C[Browse Products]
-D[Product Details]
-E[Shopping Cart]
-F[Checkout]
-G[Payment]
-H[Order Complete]
-I[Order History]
+%% ======================================
+%% Users
+%% ======================================
 
-A --> B --> C --> D --> E --> F --> G --> H --> I
+Customer[Customer]
+Admin[Admin]
+SuperAdmin[Super Admin]
+
+%% ======================================
+%% Presentation Layer
+%% ======================================
+
+subgraph Presentation["Presentation Layer"]
+Frontend["React Frontend<br/>(User Interface)"]
 end
 
-%% =========================
-%% ADMIN
-%% =========================
-subgraph ADMIN["🛠️ ADMINISTRATOR"]
-direction TB
+%% ======================================
+%% Application Layer
+%% ======================================
 
-AA[Admin Login]
-AB[Dashboard]
+subgraph Application["Application Layer (Express.js Backend)"]
 
-AA --> AB
+Auth["Authentication Module"]
 
-AB --> AC[Manage Products]
-AB --> AD[Manage Categories]
-AB --> AE[Manage Orders]
-AB --> AF[Manage Users]
+Product["Product Management"]
 
-end
+Cart["Shopping Cart"]
 
-%% =========================
-%% BACKEND
-%% =========================
-subgraph BACKEND["⚙️ BACKEND (Node.js)"]
-direction LR
+Order["Order Management"]
 
-BA[Authentication]
-BB[Product Service]
-BC[Cart Service]
-BD[Order Service]
-BE[User Service]
-BF[Admin Service]
-BG[REST API]
+Payment["Payment Module"]
+
+Warranty["Warranty Module"]
+
+AdminModule["Administration Module"]
+
+Upload["File Upload Module"]
 
 end
 
-%% =========================
-%% DATABASE
-%% =========================
-subgraph DATABASE["🗄️ DATABASE / STORAGE"]
-direction LR
+%% ======================================
+%% Data Layer
+%% ======================================
 
-DA[(Users)]
-DB[(Categories)]
-DC[(Products)]
-DD[(Cart)]
-DE[(Orders)]
-DF[(Order Items)]
-DG[(Payments)]
+subgraph Data["Data Layer"]
+
+Database[("MySQL Database")]
+
+Storage[("Uploads Folder<br/>Product Images")]
 
 end
 
-%% =========================
-%% CONNECTIONS
-%% =========================
+%% ======================================
+%% Connections
+%% ======================================
 
-CUSTOMER --> BACKEND
-ADMIN --> BACKEND
+Customer --> Frontend
+Admin --> Frontend
+SuperAdmin --> Frontend
 
-BA --> DA
-BB --> DB
-BB --> DC
-BC --> DD
-BD --> DE
-BD --> DF
-BD --> DG
-BE --> DA
-BF --> DA
+Frontend --> Auth
+Frontend --> Product
+Frontend --> Cart
+Frontend --> Order
+Frontend --> Payment
+Frontend --> Warranty
+Frontend --> AdminModule
+
+Product --> Upload
+
+Auth --> Database
+Product --> Database
+Cart --> Database
+Order --> Database
+Payment --> Database
+Warranty --> Database
+AdminModule --> Database
+
+Upload --> Storage
+Upload --> Database
 ```
 ## 1) แผนภาพกรณีการใช้งาน (Use Case Diagram)
 
-![Logo](images/Screenshot.png)
+![Logo](images/UseCase.drawio.png)
 
 หน้าที่ของแผนภาพ:
 - แสดงขอบเขตของระบบ TechPulse ให้เห็นชัดว่าใครทำอะไรได้บ้าง
@@ -193,80 +193,233 @@ BF --> DA
 
 ```mermaid
 classDiagram
-  class User {
-    +int id
-    +string first_name
-    +string last_name
-    +string email
-    +string password
-    +string role
-    +json permissions
-    +datetime created_at
-    +datetime updated_at
-  }
 
-  class Category {
-    +int id
-    +string name
-    +string image
-    +datetime created_at
-    +datetime updated_at
-  }
+%% =================================
+%% USER
+%% =================================
 
-  class Product {
-    +int id
-    +int category_id
-    +string sku
-    +string name
-    +string brand
-    +string description
-    +decimal price
-    +int stock
-    +string status
-    +bool featured
-  }
+class User{
++userId : int
++name : string
++email : string
++password : string
++phone : string
++address : string
 
-  class Order {
-    +int id
-    +int user_id
-    +decimal total_price
-    +string status
-    +string shipping_name
-    +string shipping_phone
-    +string shipping_address
-    +string shipping_city
-    +string shipping_postal_code
-    +string shipping_country
-    +datetime created_at
-    +datetime updated_at
-  }
++register()
++login()
++logout()
++updateProfile()
+}
 
-  class OrderItem {
-    +int id
-    +int order_id
-    +int product_id
-    +int quantity
-    +decimal price
-    +decimal subtotal
-    +datetime created_at
-  }
+class Customer{
++browseProducts()
++searchProducts()
++filterProducts()
++viewProductDetail()
 
-  class Payment {
-    +int id
-    +int order_id
-    +string payment_method
-    +string payment_status
-    +string transaction_id
-    +decimal amount
-    +datetime paid_at
-    +datetime created_at
-  }
++manageShoppingCart()
 
-  User "1" --> "0..*" Order : สร้างคำสั่งซื้อ
-  Category "1" --> "0..*" Product : จัดกลุ่มสินค้า
-  Order "1" --> "1..*" OrderItem : มีรายการสินค้า
-  Product "1" --> "0..*" OrderItem : ถูกอ้างอิงในรายการสั่งซื้อ
-  Order "1" --> "0..*" Payment : เชื่อมข้อมูลการชำระเงิน
++checkout()
++viewOrders()
+
++viewWarranty()
++submitWarrantyClaim()
+}
+
+class Admin{
++manageProducts()
++manageCategories()
++manageOrders()
++viewCustomerInformation()
++manageWarrantyClaims()
++viewDashboard()
+}
+
+class SuperAdmin{
++manageAdminAccounts()
++manageRoles()
++manageSystemSettings()
++viewSystemLogs()
+}
+
+User <|-- Customer
+User <|-- Admin
+Admin <|-- SuperAdmin
+
+%% =================================
+%% PRODUCT
+%% =================================
+
+class Product{
+
++productId : int
++name : string
++description : string
++price : decimal
++stock : int
++status : string
+
+}
+
+class Category{
+
++categoryId : int
++categoryName : string
+
+}
+
+Category "1" --> "*" Product
+
+%% =================================
+%% SHOPPING CART
+%% =================================
+
+class ShoppingCart{
+
++cartId : int
+
++addItem()
+
++updateItem()
+
++removeItem()
+
++clearCart()
+
+}
+
+class CartItem{
+
++quantity : int
+
++subtotal : decimal
+
+}
+
+Customer "1" --> "1" ShoppingCart
+
+ShoppingCart "1" *-- "*" CartItem
+
+CartItem "*" --> "1" Product
+
+%% =================================
+%% ORDER
+%% =================================
+
+class Order{
+
++orderId : int
+
++orderDate : Date
+
++status : string
+
++totalAmount : decimal
+
++placeOrder()
+
++trackOrder()
+
+}
+
+class OrderItem{
+
++quantity : int
+
++price : decimal
+
+}
+
+Customer "1" --> "*" Order
+
+Order "1" *-- "*" OrderItem
+
+OrderItem "*" --> "1" Product
+
+%% =================================
+%% PAYMENT
+%% =================================
+
+class Payment{
+
++paymentId : int
+
++paymentMethod : string
+
++amount : decimal
+
++paymentStatus : string
+
++processPayment()
+
+}
+
+Order "1" --> "1" Payment
+
+%% =================================
+%% WARRANTY
+%% =================================
+
+class Warranty{
+
++warrantyId : int
+
++serialNumber : string
+
++expiryDate : Date
+
++status : string
+
+}
+
+class WarrantyClaim{
+
++claimId : int
+
++claimDate : Date
+
++description : string
+
++claimStatus : string
+
+}
+
+OrderItem "1" --> "1" Warranty
+
+Warranty "1" --> "*" WarrantyClaim
+
+%% =================================
+%% DASHBOARD
+%% =================================
+
+class Dashboard{
+
++viewSales()
+
++viewRevenue()
+
++viewOrders()
+
++viewCustomers()
+
+}
+
+Admin --> Dashboard
+
+%% =================================
+%% ROLE
+%% =================================
+
+class Role{
+
++roleId : int
+
++roleName : string
+
+}
+
+SuperAdmin --> Role
 ```
 
 หน้าที่ของแผนภาพ:
