@@ -1,10 +1,10 @@
 # E-Commerce Platform for Computer Hardware and Gaming Gears
 
 **สมาชิก**
-- 67144643 สุรวุฒิ บุญยู้
-- 67150490 เชษฐกิตติ์ สืบสุขสันติ Sorfware Developer & Qa Tester
-- 67159224 รัชภูมิ ธรรมประชา Software developer & Ui Designer
-- 67159844 ภูริภัทร ทองมวน
+- 67144643 สุรวุฒิ บุญยู้ (Project manager)
+- 67150490 เชษฐกิตติ์ สืบสุขสันติ (Sorfware Developer & Qa Tester)
+- 67159224 รัชภูมิ ธรรมประชา (Software developer & Ui Designer)
+- 67159844 ภูริภัทร ทองมวน  (Software developer & Ui Designer)
 
 ## หลักการและเหตุผล
 
