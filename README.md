@@ -330,32 +330,195 @@ classDiagram
 
 ```mermaid
 sequenceDiagram
-  autonumber
-  actor C as ลูกค้า
-  participant FE as ส่วนหน้าเว็บ React
-  participant BE as ส่วนหลังเว็บ Express
-  participant OM as ตัวจัดการคำสั่งซื้อ
-  participant PM as ตัวจัดการชำระเงิน
-  participant DB as ฐานข้อมูล MySQL
 
-  C->>FE: กดยืนยันสั่งซื้อ
-  FE->>BE: ส่งคำขอสร้างคำสั่งซื้อ พร้อมโทเคนและข้อมูลจัดส่ง
-  BE->>OM: เริ่มสร้างคำสั่งซื้อ
-  OM->>DB: เริ่มธุรกรรม
-  OM->>DB: ตรวจสต็อกและล็อกข้อมูลสินค้า
-  OM->>DB: บันทึกคำสั่งซื้อและรายการสินค้า
-  OM->>DB: ตัดจำนวนสต็อกสินค้า
-  OM->>DB: ยืนยันธุรกรรม
-  OM-->>BE: ส่งรหัสคำสั่งซื้อกลับ
-  BE-->>FE: ตอบกลับว่าสร้างคำสั่งซื้อสำเร็จ
+autonumber
 
-  C->>FE: เลือกวิธีชำระเงินและยืนยัน
-  FE->>BE: ส่งคำขอประมวลผลการชำระเงิน
-  BE->>PM: ประมวลผลการชำระเงิน
-  PM->>DB: บันทึกข้อมูลการชำระเงิน
-  PM-->>BE: ส่งสถานะการชำระเงิน
-  BE-->>FE: ตอบกลับผลลัพธ์สำเร็จหรือรอดำเนินการหรือไม่สำเร็จ
-  FE-->>C: แสดงผลการชำระเงินและสถานะคำสั่งซื้อ
+actor Customer
+
+participant Frontend as React Frontend
+participant ProductController
+participant CartController
+participant OrderController
+participant PaymentController
+participant DB as MySQL Database
+
+%% ==========================
+%% Browse Products
+%% ==========================
+
+Customer->>Frontend: Browse Products
+
+activate Frontend
+
+Frontend->>ProductController: GET /products
+
+activate ProductController
+
+ProductController->>DB: Query Products
+
+activate DB
+
+DB-->>ProductController: Product List
+
+deactivate DB
+
+ProductController-->>Frontend: Return Products
+
+deactivate ProductController
+
+Frontend-->>Customer: Display Product List
+
+deactivate Frontend
+
+%% ==========================
+%% View Product Detail
+%% ==========================
+
+Customer->>Frontend: Select Product
+
+activate Frontend
+
+Frontend->>ProductController: GET /products/{id}
+
+activate ProductController
+
+ProductController->>DB: Query Product Detail
+
+activate DB
+
+DB-->>ProductController: Product Detail
+
+deactivate DB
+
+ProductController-->>Frontend: Return Product Detail
+
+deactivate ProductController
+
+Frontend-->>Customer: Display Product Detail
+
+deactivate Frontend
+
+%% ==========================
+%% Add to Cart
+%% ==========================
+
+Customer->>Frontend: Add to Cart
+
+activate Frontend
+
+Frontend->>CartController: POST /cart
+
+activate CartController
+
+CartController->>DB: Save Cart Item
+
+activate DB
+
+DB-->>CartController: Cart Updated
+
+deactivate DB
+
+CartController-->>Frontend: Cart Updated
+
+deactivate CartController
+
+Frontend-->>Customer: Display Shopping Cart
+
+deactivate Frontend
+
+%% ==========================
+%% Checkout
+%% ==========================
+
+Customer->>Frontend: Checkout
+
+activate Frontend
+
+Frontend->>OrderController: Submit Shipping Address
+
+activate OrderController
+
+OrderController-->>Frontend: Address Valid
+
+Frontend->>OrderController: Select Payment Method
+
+OrderController-->>Frontend: Payment Method Accepted
+
+deactivate OrderController
+
+%% ==========================
+%% Place Order
+%% ==========================
+
+Customer->>Frontend: Place Order
+
+Frontend->>OrderController: Create Order
+
+activate OrderController
+
+OrderController->>DB: Insert Order
+
+activate DB
+
+DB-->>OrderController: Order ID
+
+deactivate DB
+
+loop For each Cart Item
+
+OrderController->>DB: Insert Order Item
+
+DB-->>OrderController: Success
+
+end
+
+%% ==========================
+%% Payment
+%% ==========================
+
+OrderController->>PaymentController: Process Payment
+
+activate PaymentController
+
+PaymentController->>DB: Update Payment Status
+
+activate DB
+
+DB-->>PaymentController: Payment Completed
+
+deactivate DB
+
+alt Payment Success
+
+PaymentController-->>OrderController: Payment Success
+
+OrderController->>DB: Update Order Status
+
+DB-->>OrderController: Paid
+
+OrderController->>DB: Clear Shopping Cart
+
+DB-->>OrderController: Cart Cleared
+
+OrderController-->>Frontend: Order Completed
+
+Frontend-->>Customer: Display Order Success
+
+else Payment Failed
+
+PaymentController-->>OrderController: Payment Failed
+
+OrderController-->>Frontend: Display Payment Failed
+
+Frontend-->>Customer: Retry Payment
+
+end
+
+deactivate PaymentController
+
+deactivate OrderController
+
+deactivate Frontend
 ```
 
 หน้าที่ของแผนภาพ:
