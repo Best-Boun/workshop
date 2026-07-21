@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      UAT Checklist — ระบบร้านค้าออนไลน์ (Customer / Admin / Super Admin)
+    </title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Firebase -->
+    <script type="module" src="js/firebase.js"></script>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <header class="top">
+        <div>
+          <p class="eyebrow">User Acceptance Test — เอกสารทดสอบตอบรับผู้ใช้</p>
+          <h1>UAT Checklist: ระบบร้านค้าออนไลน์</h1>
+          <p class="sub">
+            ครอบคลุมขอบเขตของระบบ (System Scope) ตามเอกสารกำหนดสิทธิ์ผู้ใช้งาน
+            3 ระดับ: ลูกค้า (Customer), ผู้ดูแลระบบ (Admin) และผู้จัดการระบบ
+            (Super Admin) — ฉบับปรับปรุง: เพิ่มการทดสอบเข้าสู่ระบบของ
+            Admin/Super Admin, การเข้าถึงแบบ Guest,
+            สถานะคำสั่งซื้อและสต็อกสินค้า
+          </p>
+        </div>
+
+        <div class="stat-block">
+          <div class="stat">
+            <div class="num" id="stat-total">0</div>
+            <div class="lbl">Total Cases</div>
+          </div>
+
+          <div class="stat">
+            <div class="num" id="stat-pass" style="color: var(--pass)">0</div>
+            <div class="lbl">Passed</div>
+          </div>
+
+          <div class="stat">
+            <div class="num" id="stat-fail" style="color: var(--fail)">0</div>
+            <div class="lbl">Failed</div>
+          </div>
+
+          <div class="stat">
+            <div class="num" id="stat-pct" style="color: var(--moss-d)">0%</div>
+            <div class="lbl">% ผ่าน</div>
+          </div>
+        </div>
+      </header>
+
+      <div class="progress-row">
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+
+        <div class="progress-text" id="progress-text">
+          0 / 0 ทดสอบแล้ว (0%)
+        </div>
+
+        <span class="save-status" id="save-status">กำลังโหลด...</span>
+      </div>
+
+      <div class="toolbar" id="filter-bar"></div>
+
+      <div id="modules"></div>
+
+      <section class="issue-section">
+        <div class="issue-section-head">
+          <p class="eyebrow">Issue Log</p>
+          <h2>ตารางสรุปปัญหาที่พบ</h2>
+        </div>
+
+        <div id="issue-table-wrap"></div>
+
+        <p class="issue-refs" id="issue-refs"></p>
+
+        <div class="verdict-box">
+          <h3>สรุปผลการประเมิน UAT</h3>
+          <p id="verdict-text"></p>
+        </div>
+      </section>
+
+      <footer>
+        สร้างขึ้นสำหรับการทดสอบ UAT ภายในทีม · ข้อมูลจะถูกซิงค์ผ่าน Firebase
+        และสามารถเปิดดูจากอุปกรณ์เครื่องอื่นได้
+      </footer>
+    </div>
+
+    <!-- App -->
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>

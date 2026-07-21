@@ -1,4 +1,10 @@
-# E-Commerce Platform for Computer Hardware and Gaming Gears
+# E-Commerce Tlecomkub
+
+## ลิ้งหน้าเว็ป
+- [Document](https://rachapoomthu-max.github.io/WorkShop/)
+- [DataSchema](/Data_Schema_Formatted.md)
+- [LinkWeb](https://moo-tle-com-kub-ex3e.vercel.app/)
+- [กระบวนการทดสอบ UAT](https://rachapoomthu-max.github.io/WorkShop/uat_checklist.html)
 
 **สมาชิก**
 - 67144643 สุรวุฒิ บุญยู้ ( Leader Dev & Project Manager )
@@ -12,36 +18,87 @@
 
 ## วัตถุประสงค์ของโครงงาน
 
-- เพื่อพัฒนาเว็บแอปพลิเคชัน E-commerce สำหรับซื้อขายอุปกรณ์คอมพิวเตอร์ที่ค้นหาง่ายและแยกหมวดหมู่ชัดเจน
-- เพื่อพัฒนาระบบตะกร้าสินค้าที่สามารถคำนวณเงิน ปรับเพิ่ม/ลดจำนวน และสรุปยอดสั่งซื้อได้อย่างถูกต้อง
+โครงงานนี้จัดทำขึ้นเพื่อพัฒนาเว็บสำหรับการจำหน่ายอุปกรณ์คอมพิวเตอร์ผ่านระบบออนไลน์ โดยมุ่งเน้นการอำนวยความสะดวกแก่ผู้ใช้งานในการเลือกซื้อสินค้า การจัดการคำสั่งซื้อ และการบริหารจัดการข้อมูลภายในระบบ  โดยมีวัตถุประสงค์ดังต่อไปนี้
 
-## ขอบเขตของระบบ
+เพื่อพัฒนาเว็บแอปพลิเคชัน E-commerce สำหรับจำหน่ายอุปกรณ์คอมพิวเตอร์
+เพื่อพัฒนาระบบจัดการข้อมูลสินค้าและหมวดหมู่สินค้าให้สามารถเพิ่ม แก้ไข ลบ และค้นหาข้อมูลได้อย่างมีประสิทธิภาพ
+เพื่อพัฒนาระบบตะกร้าสินค้าและระบบสั่งซื้อที่สามารถคำนวณยอดชำระเงินได้อย่างถูกต้อง
+เพื่อพัฒนาระบบจัดการข้อมูลสำหรับผู้ดูแลระบบ เพื่อรองรับการจัดการสินค้า คำสั่งซื้อ และข้อมูลลูกค้า
+เพื่อพัฒนาระบบรายงานและ Dashboard สำหรับแสดงข้อมูลสรุปที่ช่วยสนับสนุนการบริหารจัดการร้านค้า
+เพื่อศึกษาการพัฒนาเว็บแอปพลิเคชันด้วยเทคโนโลยีสมัยใหม่ และประยุกต์ใช้ในการพัฒนาระบบ E-commerce อย่างเป็นรูปธรรม
 
-**ผู้ใช้งาน**
-- ลูกค้า
-- ผู้ดูแลระบบ
-- ผู้จัดการ
+## ขอบเขตของระบบ (System Scope)
 
-## ความสามารถของระบบ
+ระบบถูกออกแบบเพื่อรองรับการบริหารจัดการร้านค้าออนไลน์ โดยแบ่งผู้ใช้งานออกเป็น 3 ระดับ ได้แก่ ลูกค้า (Customer) ผู้ดูแลระบบ (Admin) และ ผู้จัดการระบบ (Super Admin) ซึ่งแต่ละระดับจะมีสิทธิ์และความสามารถในการใช้งานที่แตกต่างกัน เพื่อให้การดำเนินงานของระบบเป็นไปอย่างมีประสิทธิภาพ มีความปลอดภัย และสามารถบริหารจัดการข้อมูลได้อย่างเหมาะสม โดยมีรายละเอียดดังต่อไปนี้
 
-**ลูกค้า (Customer)**
-- สามารถสมัครสมาชิก เข้าสู่ระบบ และออกจากระบบได้
-- สามารถค้นหาและดูรายละเอียดสินค้าตามหมวดหมู่ได้
-- สามารถเพิ่มสินค้า แก้ไขจำนวน หรือลบสินค้าออกจากตะกร้าสินค้าได้
-- สามารถสั่งซื้อสินค้าและชำระเงินผ่านระบบจำลอง (Simulation / Mock Payment) ได้
-- สามารถติดตามสถานะคำสั่งซื้อและตรวจสอบประวัติการสั่งซื้อของตนเองได้
+## 1. ลูกค้า (Customer)
 
-**ผู้ดูแลระบบ (Admin)**
-- สามารถจัดการข้อมูลสินค้า ได้แก่ เพิ่ม แก้ไข ลบ และอัปเดตข้อมูลสินค้าได้
-- สามารถจัดการข้อมูลหมวดหมู่สินค้าได้
-- สามารถจัดการคำสั่งซื้อของลูกค้า และอัปเดตสถานะคำสั่งซื้อได้
-- สามารถดูรายงานและ Dashboard สรุปข้อมูลเบื้องต้นของระบบได้
+ลูกค้าเป็นผู้ใช้งานทั่วไปของระบบ มีหน้าที่ในการเลือกซื้อสินค้า จัดการข้อมูลส่วนตัว และติดตามการสั่งซื้อ โดยมีความสามารถดังนี้
 
-**ผู้จัดการระบบ (Super Admin)**
-- สามารถจัดการข้อมูลสมาชิกทั้งหมด รวมถึงเพิ่ม แก้ไข ระงับ และลบบัญชีผู้ใช้งานได้
-- สามารถจัดการสิทธิ์การใช้งานของผู้ดูแลระบบ (Admin) และผู้ใช้งาน (Customer) ได้
-- สามารถเข้าถึงและใช้งานทุกความสามารถของผู้ดูแลระบบได้
-- สามารถดูรายงานและ Dashboard ภาพรวมของระบบ เพื่อใช้ในการบริหารจัดการร้านค้าได้
+## 1.1 การจัดการบัญชีผู้ใช้งาน
+- สามารถสมัครสมาชิกเพื่อเข้าใช้งานระบบได้
+- สามารถเข้าสู่ระบบ (Login) ได้
+## 1.2 การค้นหาและเลือกซื้อสินค้า
+- สามารถค้นหาสินค้าจากชื่อสินค้าได้
+- สามารถเลือกดูสินค้าตามหมวดหมู่ได้
+- สามารถดูรายละเอียดของสินค้าแต่ละรายการได้
+## 1.3 การจัดการตะกร้าสินค้า
+- สามารถเพิ่มสินค้าลงในตะกร้าได้
+- สามารถแก้ไขจำนวนสินค้าในตะกร้าได้
+- สามารถลบสินค้าออกจากตะกร้าได้
+- สามารถตรวจสอบรายการสินค้าในตะกร้าได้
+## 1.4 การสั่งซื้อสินค้า
+- สามารถเลือกที่อยู่สำหรับการจัดส่งสินค้าได้
+- สามารถชำระเงินผ่านระบบจำลอง (Simulation / Mock Payment) ได้
+- สามารถตรวจสอบข้อมูลการสั่งซื้อก่อนยืนยันรายการได้
+- สามารถยืนยันคำสั่งซื้อสินค้าได้
+## 1.5 การติดตามคำสั่งซื้อ
+- สามารถตรวจสอบสถานะของคำสั่งซื้อได้
+- สามารถดูประวัติการสั่งซื้อทั้งหมดของตนเองได้
+## 1.6 การจัดการที่อยู่จัดส่ง
+- สามารถเพิ่มข้อมูลที่อยู่จัดส่งได้
+- สามารถแก้ไขข้อมูลที่อยู่จัดส่งได้
+- สามารถลบข้อมูลที่อยู่จัดส่งได้
+  
+## 2. ผู้ดูแลระบบ (Admin)
+
+ผู้ดูแลระบบมีหน้าที่บริหารจัดการข้อมูลภายในร้านค้า รวมถึงติดตามคำสั่งซื้อและดูข้อมูลสรุปของระบบ โดยมีความสามารถดังนี้
+
+## 2.1 การจัดการข้อมูลสินค้า
+- สามารถเพิ่มข้อมูลสินค้าได้
+- สามารถแก้ไขข้อมูลสินค้าได้
+- สามารถลบข้อมูลสินค้าได้
+- สามารถดูรายการสินค้าทั้งหมดได้
+## 2.2 การจัดการหมวดหมู่สินค้า
+- สามารถเพิ่มหมวดหมู่สินค้าได้
+- สามารถแก้ไขหมวดหมู่สินค้าได้
+- สามารถลบหมวดหมู่สินค้าได้
+- สามารถดูรายการหมวดหมู่สินค้าได้
+## 2.3 การจัดการคำสั่งซื้อ
+- สามารถตรวจสอบรายการคำสั่งซื้อของลูกค้าได้
+- สามารถอัปเดตสถานะคำสั่งซื้อได้
+- สามารถติดตามความคืบหน้าของคำสั่งซื้อได้
+## 2.4 การดูรายงานและ Dashboard
+- สามารถดูรายงานสรุปข้อมูลการขายเบื้องต้นได้
+- สามารถดู Dashboard แสดงข้อมูลสถิติของระบบได้
+## 2.5 การจัดการข้อมูลลูกค้า
+- สามารถค้นหาข้อมูลลูกค้าได้
+- สามารถดูรายละเอียดข้อมูลลูกค้าได้
+  
+## 3. ผู้จัดการระบบ (Super Admin)
+
+ผู้จัดการระบบเป็นผู้ใช้งานที่มีสิทธิ์สูงสุดในการบริหารจัดการระบบทั้งหมด สามารถกำหนดสิทธิ์ผู้ใช้งานและติดตามภาพรวมของระบบได้ โดยมีความสามารถดังนี้
+
+## 3.1 การจัดการข้อมูลสมาชิก
+- สามารถดูข้อมูลผู้ดูแลระบบทั้งหมดได้
+- สามารถเพิ่มข้อมูลผู้ดูแลระบบได้
+- สามารถแก้ไขข้อมูลผู้ดูแลระบบได้
+- สามารถลบข้อมูลผู้ดูแลระบบได้
+## 3.2 การจัดการสิทธิ์การใช้งาน
+- สามารถกำหนดสิทธิ์การใช้งานของผู้ดูแลระบบ (Admin) ได้
+- สามารถกำหนดสิทธิ์การใช้งานของลูกค้า (Customer) ได้
+## 3.3 การดูรายงานและ Dashboard ภาพรวม
+- สามารถดูและเข้าถึงฟังก์ชันทั้งหมดของผู้ดูแลระบบได้
 
 ## แนวทางการพัฒนาตาม SDLC
 
@@ -49,34 +106,49 @@
 2. รวบรวมข้อมูลสินค้าและวิเคราะห์ความต้องการหน้าจอของระบบ
 3. ออกแบบ UI/UX ด้วย Figma และออกแบบโครงสร้างฐานข้อมูล (Database Schema)
 4. พัฒนา Frontend ด้วย React และพัฒนา Backend ด้วย Node.js เชื่อมต่อกับ MySQL
-5. ทดสอบระบบแบบ
-6. นำระบบขึ้นระบบจำลองหรือคลาวด์เซิร์ฟเวอร์
-7. ตรวจสอบและแก้ไขข้อผิดพลาด
+5. ทดสอบระบบด้วย Manual Testing และ User Acceptance Testing (UAT)
+6. ปรับปรุงและแก้ไขข้อผิดพลาดของระบบ
+7. จัดทำเอกสารและสรุปผลการพัฒนา
 
-## เครื่องมือแล้วเทคโนโลยีที่ใช้
+## เครื่องมือและเทคโนโลยีที่ใช้
 
-**Frontend**
-- HTML/CSS/Javascript
-- React
-- Boostrap
+### Frontend
+- Vite with React
 
-**Backend**
+### Backend
 - Node.js
+- Express.js
 
-**Database**
-- Local Storage
+### Database
+- MySQL
 
-**Design Tool**
+### Authentication
+- JWT (JSON Web Token)
+- bcrypt
+
+### Design Tool
 - Figma
 
-**Version Control**
-- Github
+### Version Control
+- Git
+- GitHub
+- SourceTree
+
+### Development Tool
+- Visual Studio Code
 
 ## แนวทางในการทดสอบระบบ
 
 **ประเภทการทดสอบ**
+- Manual Testing
 - User Acceptance Testing (UAT)
-  
+
+
+ไม่วัดผลการใช้เครื่องมือทดสอบอัตโนมัติหรือมีการจัดทํารายงานผลการทดสอบอย่างเป็นทางการ
+การทดสอบการทํางานของระบบด้วยตนเองตามฟังก์ชันทีพัฒนา พร้อมสาธิตการทํางานต่อผู ้สอน 
+โดยอธิบายขั้นตอนการทดสอบผลลัพธ์ทีคาดหวังและผลลัพธ์ทีเกิดขึ้นจริง เพือแสดงให้เห็นว่าระบบทํางาน
+ได้ถูกต้องตามวัตถุประสงค์ที่กําหนดไว้  
+
 ## ผลลัพท์ที่คาดว่าจะได้รับ
 
 1. ระบบสามารถแสดงรายการสินค้าและราคาอุปกรณ์คอมพิวเตอร์แยกตามหมวดหมู่ได้อย่างถูกต้อง
@@ -91,554 +163,196 @@
 3. พัฒนาส่วนหลังบ้านด้วย Node.js และสร้างฐานข้อมูล MySQL เพื่อใช้จัดการและเชื่อมต่อข้อมูลสินค้าและคำสั่งซื้อ
 4. ทำการทดสอบระบบแบบ Manual Testing และทำ UAT ตรวจสอบความถูกต้อง พร้อมจัดทำสรุปเพื่อนำเสนอผลงาน
 
-## Screenshot SourceTree 
-
-![Logo](images/Screenshot.png)
-
-
 ## System Architecture
 
-```mermaid
+<div class="mermaid">
 flowchart TB
-
-%% ======================================
-%% Users
-%% ======================================
-
-Customer[Customer]
-Admin[Admin]
-SuperAdmin[Super Admin]
-
-%% ======================================
-%% Presentation Layer
-%% ======================================
-
-subgraph Presentation["Presentation Layer"]
-Frontend["React Frontend<br/>(User Interface)"]
+subgraph Users
+Customer["Customer"]
+Admin["Store Administrator"]
+SuperAdmin["System Administrator"]
 end
-
-%% ======================================
-%% Application Layer
-%% ======================================
-
-subgraph Application["Application Layer (Express.js Backend)"]
-
-Auth["Authentication Module"]
-
+subgraph Presentation_Layer["Presentation Layer"]
+React["React Web Application<br/>React Router"]
+end
+subgraph Application_Layer["Application Layer"]
+Express["Node.js + Express REST API"]
+Auth["Authentication"]
 Product["Product Management"]
-
+Search["Search Module"]
 Cart["Shopping Cart"]
-
 Order["Order Management"]
-
-Payment["Payment Module"]
-
-Warranty["Warranty Module"]
-
+Payment["Mock Payment"]
 AdminModule["Administration Module"]
-
-Upload["File Upload Module"]
-
 end
-
-%% ======================================
-%% Data Layer
-%% ======================================
-
-subgraph Data["Data Layer"]
-
-Database[("MySQL Database")]
-
-Storage[("Uploads Folder<br/>Product Images")]
-
+subgraph Data_Layer["Data Layer"]
+Upload["Local Image Storage"]
+DB["MySQL Database"]
 end
-
-%% ======================================
-%% Connections
-%% ======================================
-
-Customer --> Frontend
-Admin --> Frontend
-SuperAdmin --> Frontend
-
-Frontend --> Auth
-Frontend --> Product
-Frontend --> Cart
-Frontend --> Order
-Frontend --> Payment
-Frontend --> Warranty
-Frontend --> AdminModule
-
+Customer --> React
+Admin --> React
+SuperAdmin --> React
+React --> Express
+Express --> Auth
+Express --> Product
+Express --> Search
+Express --> Cart
+Express --> Order
+Express --> Payment
+Express --> AdminModule
 Product --> Upload
+Auth --> DB
+Product --> DB
+Search --> DB
+Cart --> DB
+Order --> DB
+Payment --> DB
+AdminModule --> DB
+</div>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+</script>
 
-Auth --> Database
-Product --> Database
-Cart --> Database
-Order --> Database
-Payment --> Database
-Warranty --> Database
-AdminModule --> Database
 
-Upload --> Storage
-Upload --> Database
-```
-## 1) แผนภาพกรณีการใช้งาน (Use Case Diagram)
-
-![Logo](images/UseCase.drawio.png)
-
-หน้าที่ของแผนภาพ:
-- แสดงขอบเขตของระบบ TechPulse ให้เห็นชัดว่าใครทำอะไรได้บ้าง
-- ใช้ยืนยันขอบเขตงานกับสมาชิกในทีมและผู้สอน
-
-ความสำคัญต่อการพัฒนาระบบ:
-- ลดความเสี่ยงการตกหล่นฟังก์ชันสำคัญ เช่น ตรวจสิทธิ์และงานหลังบ้าน
-- ใช้เป็นฐานในการกำหนดเส้นทางหน้าเว็บและสิทธิ์การเรียก API ตามบทบาท
-
-## 2) แผนภาพคลาส (Class Diagram)
-
-หมายเหตุ: แผนภาพนี้อ้างอิงชื่อโครงสร้างข้อมูลจริงในฐานข้อมูลของโครงการ
-
-```mermaid
+## Class Diagram
+<div class="mermaid">
 classDiagram
-
-%% =================================
-%% USER
-%% =================================
-
 class User{
 +userId : int
-+name : string
++firstName : string
++lastName : string
 +email : string
-+password : string
++passwordHash : string
 +phone : string
-+address : string
-
++status : string
 +register()
 +login()
 +logout()
 +updateProfile()
 }
-
 class Customer{
-+browseProducts()
 +searchProducts()
 +filterProducts()
 +viewProductDetail()
-
 +manageShoppingCart()
-
-+checkout()
++manageAddress()
++processOrder()
 +viewOrders()
-
-+viewWarranty()
-+submitWarrantyClaim()
 }
-
 class Admin{
 +manageProducts()
 +manageCategories()
 +manageOrders()
 +viewCustomerInformation()
-+manageWarrantyClaims()
 +viewDashboard()
 }
-
 class SuperAdmin{
 +manageAdminAccounts()
 +manageRoles()
 +manageSystemSettings()
 +viewSystemLogs()
 }
-
 User <|-- Customer
 User <|-- Admin
 Admin <|-- SuperAdmin
-
-%% =================================
-%% PRODUCT
-%% =================================
-
+class Role{
++roleId : int
++roleName : string
+}
+User "*" --> "1" Role
+class Address{
++addressId : int
++recipientName : string
++phone : string
++addressLine : string
++subdistrict : string
++district : string
++province : string
++postalCode : string
++isDefault : boolean
+}
+User "1" -- "*" Address
 class Product{
-
 +productId : int
++sku : string
 +name : string
 +description : string
 +price : decimal
 +stock : int
 +status : string
-
++imageURL : string
 }
-
 class Category{
-
 +categoryId : int
 +categoryName : string
-
 }
-
-Category "1" --> "*" Product
-
-%% =================================
-%% SHOPPING CART
-%% =================================
-
+class Brand{
++brandId : int
++brandName : string
+}
+Category "1" --> "" Product
+Brand "1" --> "" Product
 class ShoppingCart{
-
 +cartId : int
-
++totalPrice : decimal
 +addItem()
-
 +updateItem()
-
 +removeItem()
-
 +clearCart()
-
 }
-
 class CartItem{
-
 +quantity : int
-
 +subtotal : decimal
-
 }
-
-Customer "1" --> "1" ShoppingCart
-
-ShoppingCart "1" *-- "*" CartItem
-
-CartItem "*" --> "1" Product
-
-%% =================================
-%% ORDER
-%% =================================
-
+Customer "1" -- "1" ShoppingCart
+ShoppingCart "1" -- "" CartItem
+CartItem "" --> "1" Product
 class Order{
-
 +orderId : int
-
 +orderDate : Date
-
 +status : string
-
 +totalAmount : decimal
-
++shippingName : string
++shippingPhone : string
++shippingAddress : string
 +placeOrder()
-
 +trackOrder()
-
 }
-
 class OrderItem{
-
++orderItemId : int
 +quantity : int
-
-+price : decimal
-
++unitPrice : decimal
++subtotal : decimal
 }
-
-Customer "1" --> "*" Order
-
-Order "1" *-- "*" OrderItem
-
-OrderItem "*" --> "1" Product
-
-%% =================================
-%% PAYMENT
-%% =================================
-
+Customer "1" --> "" Order
+Order "1" -- "" OrderItem
+OrderItem "" --> "1" Product
 class Payment{
-
 +paymentId : int
-
 +paymentMethod : string
-
 +amount : decimal
-
 +paymentStatus : string
-
++paymentDate : Date
++transactionId : string
 +processPayment()
-
 }
-
 Order "1" --> "1" Payment
-
-%% =================================
-%% WARRANTY
-%% =================================
-
-class Warranty{
-
-+warrantyId : int
-
-+serialNumber : string
-
-+expiryDate : Date
-
-+status : string
-
-}
-
-class WarrantyClaim{
-
-+claimId : int
-
-+claimDate : Date
-
-+description : string
-
-+claimStatus : string
-
-}
-
-OrderItem "1" --> "1" Warranty
-
-Warranty "1" --> "*" WarrantyClaim
-
-%% =================================
-%% DASHBOARD
-%% =================================
-
-class Dashboard{
-
+class DashboardService{
 +viewSales()
-
 +viewRevenue()
-
 +viewOrders()
-
 +viewCustomers()
-
++viewProducts()
 }
-
-Admin --> Dashboard
-
-%% =================================
-%% ROLE
-%% =================================
-
-class Role{
-
-+roleId : int
-
-+roleName : string
-
-}
-
+Admin ..> DashboardService
 SuperAdmin --> Role
-```
-
-หน้าที่ของแผนภาพ:
-- แสดงโครงสร้างข้อมูลหลักและความสัมพันธ์ระหว่างเอนทิตีในระบบ
-- ใช้อ้างอิงร่วมกันระหว่างการออกแบบฐานข้อมูลและการพัฒนาโมเดล
-
-ความสำคัญต่อการพัฒนาระบบ:
-- ลดความกำกวมของข้อมูล เช่น ความสัมพันธ์ Order กับ OrderItem และ Payment
-- ป้องกันการออกแบบซ้ำซ้อน ทำให้พัฒนา Controller และ Service ได้สอดคล้องกัน
-
-## 3) แผนภาพลำดับงาน (Sequence Diagram)
-
-กรณีศึกษา: ลำดับการทำงานของการสั่งซื้อและการชำระเงินในระบบจริง
-
-```mermaid
-sequenceDiagram
-
-autonumber
-
-actor Customer
-
-participant Frontend as React Frontend
-participant ProductController
-participant CartController
-participant OrderController
-participant PaymentController
-participant DB as MySQL Database
-
-%% ==========================
-%% Browse Products
-%% ==========================
-
-Customer->>Frontend: Browse Products
-
-activate Frontend
-
-Frontend->>ProductController: GET /products
-
-activate ProductController
-
-ProductController->>DB: Query Products
-
-activate DB
-
-DB-->>ProductController: Product List
-
-deactivate DB
-
-ProductController-->>Frontend: Return Products
-
-deactivate ProductController
-
-Frontend-->>Customer: Display Product List
-
-deactivate Frontend
-
-%% ==========================
-%% View Product Detail
-%% ==========================
-
-Customer->>Frontend: Select Product
-
-activate Frontend
-
-Frontend->>ProductController: GET /products/{id}
-
-activate ProductController
-
-ProductController->>DB: Query Product Detail
-
-activate DB
-
-DB-->>ProductController: Product Detail
-
-deactivate DB
-
-ProductController-->>Frontend: Return Product Detail
-
-deactivate ProductController
-
-Frontend-->>Customer: Display Product Detail
-
-deactivate Frontend
-
-%% ==========================
-%% Add to Cart
-%% ==========================
-
-Customer->>Frontend: Add to Cart
-
-activate Frontend
-
-Frontend->>CartController: POST /cart
-
-activate CartController
-
-CartController->>DB: Save Cart Item
-
-activate DB
-
-DB-->>CartController: Cart Updated
-
-deactivate DB
-
-CartController-->>Frontend: Cart Updated
-
-deactivate CartController
-
-Frontend-->>Customer: Display Shopping Cart
-
-deactivate Frontend
-
-%% ==========================
-%% Checkout
-%% ==========================
-
-Customer->>Frontend: Checkout
-
-activate Frontend
-
-Frontend->>OrderController: Submit Shipping Address
-
-activate OrderController
-
-OrderController-->>Frontend: Address Valid
-
-Frontend->>OrderController: Select Payment Method
-
-OrderController-->>Frontend: Payment Method Accepted
-
-deactivate OrderController
-
-%% ==========================
-%% Place Order
-%% ==========================
-
-Customer->>Frontend: Place Order
-
-Frontend->>OrderController: Create Order
-
-activate OrderController
-
-OrderController->>DB: Insert Order
-
-activate DB
-
-DB-->>OrderController: Order ID
-
-deactivate DB
-
-loop For each Cart Item
-
-OrderController->>DB: Insert Order Item
-
-DB-->>OrderController: Success
-
-end
-
-%% ==========================
-%% Payment
-%% ==========================
-
-OrderController->>PaymentController: Process Payment
-
-activate PaymentController
-
-PaymentController->>DB: Update Payment Status
-
-activate DB
-
-DB-->>PaymentController: Payment Completed
-
-deactivate DB
-
-alt Payment Success
-
-PaymentController-->>OrderController: Payment Success
-
-OrderController->>DB: Update Order Status
-
-DB-->>OrderController: Paid
-
-OrderController->>DB: Clear Shopping Cart
-
-DB-->>OrderController: Cart Cleared
-
-OrderController-->>Frontend: Order Completed
-
-Frontend-->>Customer: Display Order Success
-
-else Payment Failed
-
-PaymentController-->>OrderController: Payment Failed
-
-OrderController-->>Frontend: Display Payment Failed
-
-Frontend-->>Customer: Retry Payment
-
-end
-
-deactivate PaymentController
-
-deactivate OrderController
-
-deactivate Frontend
-```
-
-หน้าที่ของแผนภาพ:
-- แสดงลำดับการเรียกใช้งานจริงจากผู้ใช้ไปจนถึงฐานข้อมูล
-- ช่วยให้ทีมเห็นจุดที่ต้องมีการตรวจสอบสิทธิ์ ตรวจสต็อก และควบคุมธุรกรรม
-
-ความสำคัญต่อการพัฒนาระบบ:
-- ทำให้มองเห็นจุดเสี่ยงด้านความถูกต้องของข้อมูล เช่น การตัดสต็อกซ้ำ
-- ใช้ระบุจุดคอขวดที่ทำให้ระบบช้าในช่วงผู้ใช้หนาแน่น
-
+</div>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+</script>
+
+## Screenshot SourceTree 
+
+![Logo](/Image/SourceTree.png)
